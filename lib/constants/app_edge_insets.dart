@@ -1,6 +1,26 @@
 import 'package:flutter/material.dart';
 
 class AppEdgeInsets {
+  static const EdgeInsets h17v21 = EdgeInsets.symmetric(
+    horizontal: 17,
+    vertical: 21,
+  );
+  static const EdgeInsets t17 = EdgeInsets.only(top: 17);
+  static const EdgeInsets all10 = EdgeInsets.all(10);
+  static const EdgeInsets all12 = EdgeInsets.all(12);
+  static const EdgeInsets all14 = EdgeInsets.all(14);
+  static const EdgeInsets all16 = EdgeInsets.all(16);
+  static const EdgeInsets h16b8 = EdgeInsets.only(
+    left: 16,
+    right: 16,
+    bottom: 8,
+  );
+
+
+
+
+
+
   static const EdgeInsets t28l26r26b85 = EdgeInsets.only(
     left: 26,
     top: 28,
@@ -33,11 +53,6 @@ class AppEdgeInsets {
     bottom: 16,
   );
 
-  static const EdgeInsets h16b8 = EdgeInsets.only(
-    left: 16,
-    right: 16,
-    bottom: 8,
-  );
   static const EdgeInsets h16b16 = EdgeInsets.only(
     left: 16,
     right: 16,
@@ -324,7 +339,6 @@ class AppEdgeInsets {
   static const EdgeInsets t15 = EdgeInsets.only(top: 15);
   static const EdgeInsets t15b20 = EdgeInsets.only(top: 15, bottom: 20);
   static const EdgeInsets t5b10 = EdgeInsets.only(top: 5, right: 10);
-  static const EdgeInsets all10 = EdgeInsets.all(10);
   static const EdgeInsets all7_5 = EdgeInsets.all(7.5);
   static const EdgeInsets all40 = EdgeInsets.all(40);
 
@@ -373,10 +387,8 @@ class AppEdgeInsets {
   static const EdgeInsets all4 = EdgeInsets.all(4);
   static const EdgeInsets all5 = EdgeInsets.all(5);
   static const EdgeInsets all20 = EdgeInsets.all(20);
-  static const EdgeInsets all12 = EdgeInsets.all(12);
 
   static const EdgeInsets all15 = EdgeInsets.all(15);
-  static const EdgeInsets all16 = EdgeInsets.all(16);
   static const EdgeInsets l15 = EdgeInsets.only(left: 15);
 
   static const EdgeInsets h66t30 = EdgeInsets.only(
@@ -493,6 +505,9 @@ class AppEdgeInsets {
     horizontal: 16,
     vertical: 24,
   );
+  
+
+  
   static const EdgeInsets h24 = EdgeInsets.symmetric(horizontal: 24);
 
   static const EdgeInsets h26 = EdgeInsets.symmetric(horizontal: 26);
