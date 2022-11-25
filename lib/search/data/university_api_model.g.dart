@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'university.dart';
+part of 'university_api_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-University _$UniversityFromJson(Map<String, dynamic> json) => University(
+UniversityApiModel _$UniversityApiModelFromJson(Map<String, dynamic> json) =>
+    UniversityApiModel(
       country: json['country'] as String?,
       domains:
           (json['domains'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -18,7 +19,7 @@ University _$UniversityFromJson(Map<String, dynamic> json) => University(
       stateprovince: json['state-province'],
     );
 
-Map<String, dynamic> _$UniversityToJson(University instance) =>
+Map<String, dynamic> _$UniversityApiModelToJson(UniversityApiModel instance) =>
     <String, dynamic>{
       'country': instance.country,
       'domains': instance.domains,

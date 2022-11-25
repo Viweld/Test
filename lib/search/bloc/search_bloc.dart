@@ -14,7 +14,7 @@ class SearchEvent with _$SearchEvent {
 
   const factory SearchEvent.init() = _Init;
 
-  const factory SearchEvent.search() = _Search;
+  const factory SearchEvent.search(String val) = _Search;
 }
 
 @freezed

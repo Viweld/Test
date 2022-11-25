@@ -4,9 +4,11 @@ import 'package:hub_test/constants/app_edge_insets.dart';
 import 'package:hub_test/constants/app_text_styles.dart';
 
 class SearchField extends StatelessWidget {
+  final TextEditingController controller;
   final void Function(String) onSubmitted;
 
   const SearchField({
+    required this.controller,
     required this.onSubmitted,
     Key? key,
   }) : super(key: key);
@@ -22,6 +24,7 @@ class SearchField extends StatelessWidget {
       child: SizedBox(
         height: 38,
         child: TextField(
+          controller: controller,
           onSubmitted: onSubmitted,
           decoration: InputDecoration(
             labelText: 'Country',

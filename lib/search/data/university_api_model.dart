@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'university.g.dart';
+part 'university_api_model.g.dart';
 
 @JsonSerializable()
-class University {
+class UniversityApiModel {
   String? country;
   List<String>? domains;
   @JsonKey(name: 'web_pages')
@@ -14,7 +14,7 @@ class University {
   @JsonKey(name: 'state-province')
   dynamic stateprovince;
 
-  University({
+  UniversityApiModel({
     this.country,
     this.domains,
     this.webPages,
@@ -23,9 +23,9 @@ class University {
     this.stateprovince,
   });
 
-  factory University.fromJson(Map<String, dynamic> json) =>
-      _$UniversityFromJson(json);
+  factory UniversityApiModel.fromJson(Map<String, dynamic> json) =>
+      _$UniversityApiModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UniversityToJson(this);
+  Map<String, dynamic> toJson() => _$UniversityApiModelToJson(this);
 
 }

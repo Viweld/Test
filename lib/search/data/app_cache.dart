@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:hub_test/search/data/university_cache.dart';
+import 'package:hub_test/search/data/university_cache_model.dart';
 
 class AppCache {
   static Future<void> registerAndOpenBox() async {

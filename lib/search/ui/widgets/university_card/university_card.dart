@@ -58,7 +58,7 @@ class UniversityCard extends StatelessWidget {
                   'Barcelona Graduate School of Economics',
                   style: AppTextStyles.w400s16h19black,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

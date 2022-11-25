@@ -19,19 +19,19 @@ mixin _$SearchEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() search,
+    required TResult Function(String val) search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? search,
+    TResult? Function(String val)? search,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? search,
+    TResult Function(String val)? search,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -111,7 +111,7 @@ class _$_Init extends _Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() search,
+    required TResult Function(String val) search,
   }) {
     return init();
   }
@@ -120,7 +120,7 @@ class _$_Init extends _Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? search,
+    TResult? Function(String val)? search,
   }) {
     return init?.call();
   }
@@ -129,7 +129,7 @@ class _$_Init extends _Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? search,
+    TResult Function(String val)? search,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -179,6 +179,8 @@ abstract class _Init extends SearchEvent {
 abstract class _$$_SearchCopyWith<$Res> {
   factory _$$_SearchCopyWith(_$_Search value, $Res Function(_$_Search) then) =
       __$$_SearchCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String val});
 }
 
 /// @nodoc
@@ -187,54 +189,78 @@ class __$$_SearchCopyWithImpl<$Res>
     implements _$$_SearchCopyWith<$Res> {
   __$$_SearchCopyWithImpl(_$_Search _value, $Res Function(_$_Search) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? val = null,
+  }) {
+    return _then(_$_Search(
+      null == val
+          ? _value.val
+          : val // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Search extends _Search {
-  const _$_Search() : super._();
+  const _$_Search(this.val) : super._();
+
+  @override
+  final String val;
 
   @override
   String toString() {
-    return 'SearchEvent.search()';
+    return 'SearchEvent.search(val: $val)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Search);
+        (other.runtimeType == runtimeType &&
+            other is _$_Search &&
+            (identical(other.val, val) || other.val == val));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, val);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SearchCopyWith<_$_Search> get copyWith =>
+      __$$_SearchCopyWithImpl<_$_Search>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function() search,
+    required TResult Function(String val) search,
   }) {
-    return search();
+    return search(val);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function()? search,
+    TResult? Function(String val)? search,
   }) {
-    return search?.call();
+    return search?.call(val);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function()? search,
+    TResult Function(String val)? search,
     required TResult orElse(),
   }) {
     if (search != null) {
-      return search();
+      return search(val);
     }
     return orElse();
   }
@@ -272,8 +298,13 @@ class _$_Search extends _Search {
 }
 
 abstract class _Search extends SearchEvent {
-  const factory _Search() = _$_Search;
+  const factory _Search(final String val) = _$_Search;
   const _Search._() : super._();
+
+  String get val;
+  @JsonKey(ignore: true)
+  _$$_SearchCopyWith<_$_Search> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
