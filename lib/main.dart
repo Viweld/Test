@@ -21,8 +21,8 @@ const bool isTestMode = true;
 void main() async {
   await runZonedGuarded<Future<void>>(
     () async {
-      AppClient.initDio();
       WidgetsFlutterBinding.ensureInitialized();
+      AppClient.initDio();
       await Hive.initFlutter();
       Hive.registerAdapter(UniversityCacheAdapter());
       Bloc.observer = AppBlocObserver();
