@@ -1,14 +1,25 @@
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hub_test/search/bloc/university_view_model.dart';
 import 'package:hub_test/search/data/university.dart';
 
+part 'university_cache_model.g.dart';
+
+@HiveType(typeId: 0)
 class UniversityCache extends HiveObject implements University {
+  @HiveField(0)
   String id;
+  @HiveField(1)
   String? country;
+  @HiveField(2)
   List<String>? domains;
+  @HiveField(3)
   List<String>? webPages;
+  @HiveField(4)
   String? alphaTwoCode;
+  @HiveField(5)
   String? name;
+  @HiveField(6)
   String? stateprovince;
 
   UniversityCache({
@@ -21,12 +32,12 @@ class UniversityCache extends HiveObject implements University {
     this.stateprovince,
   });
 
-  static UniversityCache create(UniversityViewModel u)=>UniversityCache(
-    id:u.id,
-    country:u.country,
-    webPages:u.webPages,
-    name:u.name,
-  );
+  static UniversityCache create(UniversityViewModel u) => UniversityCache(
+        id: u.id,
+        country: u.country,
+        webPages: u.webPages,
+        name: u.name,
+      );
 
   @override
   String toString() => 'id=$id; '
@@ -38,31 +49,31 @@ class UniversityCache extends HiveObject implements University {
       'stateprovince=$stateprovince; ';
 }
 
-class UniversityCacheAdapter extends TypeAdapter<UniversityCache> {
-  @override
-  final typeId = 0;
-
-  @override
-  UniversityCache read(BinaryReader reader) {
-    return UniversityCache(
-      id: reader.readString(),
-      country: reader.readString(),
-      domains: reader.readStringList(),
-      webPages: reader.readStringList(),
-      alphaTwoCode: reader.readString(),
-      name: reader.readString(),
-      stateprovince: reader.readString(),
-    );
-  }
-
-  @override
-  void write(BinaryWriter writer, UniversityCache obj) {
-    writer.writeString(obj.id);
-    writer.writeString(obj.country ?? '');
-    writer.writeStringList(obj.domains ?? <String>[]);
-    writer.writeStringList(obj.webPages ?? <String>[]);
-    writer.writeString(obj.alphaTwoCode ?? '');
-    writer.writeString(obj.name ?? '');
-    writer.writeString(obj.stateprovince ?? '');
-  }
-}
+// class UniversityCacheAdapter extends TypeAdapter<UniversityCache> {
+//   @override
+//   final typeId = 0;
+//
+//   @override
+//   UniversityCache read(BinaryReader reader) {
+//     return UniversityCache(
+//       id: reader.read(),
+//       country: reader.read(),
+//       domains: reader.read(),
+//       webPages: reader.read(),
+//       alphaTwoCode: reader.read(),
+//       name: reader.read(),
+//       stateprovince: reader.read(),
+//     );
+//   }
+//
+//   @override
+//   void write(BinaryWriter writer, UniversityCache obj) {
+//     writer.write(obj.id);
+//     writer.write(obj.country ?? '');
+//     writer.write(obj.domains ?? <String>[]);
+//     writer.write(obj.webPages ?? <String>[]);
+//     writer.write(obj.alphaTwoCode ?? '');
+//     writer.write(obj.name ?? '');
+//     writer.write(obj.stateprovince ?? '');
+//   }
+// }

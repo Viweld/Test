@@ -16,7 +16,7 @@ class LoupeButton extends StatelessWidget {
     return MaterialButton(
       minWidth: 0,
       height: 0,
-      padding: AppEdgeInsets.all14,
+      padding: AppEdgeInsets.h14v10,
       shape: const CircleBorder(),
       onPressed: onPressed,
       child: SvgPicture.asset(Svgs.loupe),

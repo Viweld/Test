@@ -51,7 +51,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     if (state.isFirstLoading) {
-      await AppCache.registerAndOpenBox();
+      await AppCache.openBox();
       emit(state.copyWith(isFirstLoading: false));
     }
     final stapledUns = await AppCache.getCachedUniversities();
@@ -63,10 +63,17 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     Emitter<SearchState> emit,
   ) async {
     if (event.u.isStapled) {
-      await AppCache.addUniversity(event.u);
-    } else {
       await AppCache.removeUniversity(event.u.id);
+    } else {
+      await AppCache.addUniversity(event.u);
     }
+    emit(state.copyWith(
+      foundUns: state.foundUns
+          .map((fu) => fu.id != event.u.id
+              ? fu
+              : fu.copyWith(isStapled: !event.u.isStapled))
+          .toList(),
+    ));
     add(const SearchEvent.init());
   }
 
@@ -80,7 +87,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           .searchUns(event.val)
           .timeout(const Duration(seconds: 20));
       emit(state.copyWith(
-        foundUns: foundUns.map((u) => UniversityViewModel.create(u)).toList(),
+        foundUns: foundUns
+            .map(
+              (u) => UniversityViewModel.create(
+                u,
+                isStapled: state.stapledUns.any((su) => su.id == u.id),
+              ),
+            )
+            .toList(),
         isLoading: false,
       ));
     } catch (e) {
@@ -91,7 +105,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   @override
   Future<void> close() async {
-    await AppCache.close();
+    await AppCache.closeBox();
     return super.close();
   }
 }

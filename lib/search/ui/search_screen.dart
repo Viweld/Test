@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hub_test/constants/app_colors.dart';
 import 'package:hub_test/constants/app_edge_insets.dart';
 import 'package:hub_test/constants/app_text_styles.dart';
 import 'package:hub_test/search/bloc/search_bloc.dart';
@@ -29,7 +30,12 @@ class SearchScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const SizedBox(height: 17),
+            BlocBuilder<SearchBloc, SearchState>(
+              builder: (context, state) => !state.isLoading
+                  ? const SizedBox(height: 2)
+                  : const LinearProgressIndicator(minHeight: 2),
+            ),
+            const SizedBox(height: 15),
             const SearchGroup(),
             Expanded(
               child: BlocBuilder<SearchBloc, SearchState>(
@@ -43,6 +49,7 @@ class SearchScreen extends StatelessWidget {
                             if (state.foundUns.isNotEmpty)
                               SliverHeader(
                                 'Search results for: ${state.searchVal}',
+                                withGradient: state.stapledUns.isNotEmpty,
                               ),
                             AppSliverList(state.foundUns),
                           ]),
@@ -57,18 +64,31 @@ class SearchScreen extends StatelessWidget {
 
 class SliverHeader extends StatelessWidget {
   final String title;
+  final bool withGradient;
 
   const SliverHeader(
     this.title, {
     Key? key,
+    this.withGradient = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Padding(
-        padding: AppEdgeInsets.all16,
+      child: Container(
+        padding: !withGradient? AppEdgeInsets.h16t4b8:AppEdgeInsets.h16t10b9,
+        margin: !withGradient? null :AppEdgeInsets.t2b16,
         child: Text(title, style: AppTextStyles.w300s14h17black),
+        decoration: !withGradient
+            ? null
+            : BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    AppColors.milkBlue,
+                    AppColors.smthgOpacity,
+                  ],
+                ),
+              ),
       ),
     );
   }

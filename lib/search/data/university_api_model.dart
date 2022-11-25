@@ -7,7 +7,6 @@ part 'university_api_model.g.dart';
 
 @JsonSerializable()
 class UniversityApiModel implements University {
-
   @JsonKey(ignore: true)
   String id;
   String? country;
@@ -33,7 +32,7 @@ class UniversityApiModel implements University {
           '${name ?? ''}'
           '${alphaTwoCode ?? ''}'
           '${stateprovince is String ? stateprovince : ''}',
-        ){print('$id - $name');}
+        );
 
   factory UniversityApiModel.fromJson(Map<String, dynamic> json) =>
       _$UniversityApiModelFromJson(json);

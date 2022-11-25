@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hub_test/constants/app_themes.dart';
+import 'package:hub_test/search/data/university_cache_model.dart';
 import 'package:hub_test/search/ui/search_screen.dart';
 import 'package:hub_test/services/app_bloc_observer.dart';
 import 'package:hub_test/services/network/app_client.dart';
@@ -20,7 +22,9 @@ void main() async {
   await runZonedGuarded<Future<void>>(
     () async {
       AppClient.initDio();
+      WidgetsFlutterBinding.ensureInitialized();
       await Hive.initFlutter();
+      Hive.registerAdapter(UniversityCacheAdapter());
       Bloc.observer = AppBlocObserver();
       runApp(const App());
     },

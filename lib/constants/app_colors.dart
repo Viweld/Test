@@ -10,4 +10,5 @@ class AppColors {
   static const Color shadowBlack = Color(0x1A000000);
   static const Color milkBlue = Color(0xff97DAFF);
   static const Color grayText = Color(0xffBBBBBB);
+  static const Color smthgOpacity = Color(0x00D9D9D9);
 }

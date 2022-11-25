@@ -5,9 +5,10 @@ import 'package:hub_test/constants/app_edge_insets.dart';
 import 'package:hub_test/constants/app_text_styles.dart';
 import 'package:hub_test/search/bloc/search_bloc.dart';
 import 'package:hub_test/search/bloc/university_view_model.dart';
+import 'package:hub_test/search/ui/widgets/confirm_dialog.dart';
 import 'package:hub_test/search/ui/widgets/university_card/clip_switch.dart';
 
-class UniversityCard extends StatelessWidget {
+class UniversityCard extends StatefulWidget {
   final UniversityViewModel university;
 
   const UniversityCard({
@@ -16,10 +17,15 @@ class UniversityCard extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<UniversityCard> createState() => _UniversityCardState();
+}
+
+class _UniversityCardState extends State<UniversityCard> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 183,
+      height: widget.university.webPages.isEmpty ? 144 : 183,
       margin: AppEdgeInsets.h16b8,
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -40,15 +46,26 @@ class UniversityCard extends StatelessWidget {
             children: [
               const SizedBox(width: 16),
               Text(
-                university.country,
+                widget.university.country,
                 style: AppTextStyles.w400s14h17black,
               ),
               const Spacer(),
               ClipSwitch(
-                isStapled: university.isStapled,
-                onChanged: () => context
-                    .read<SearchBloc>()
-                    .add(SearchEvent.changeStaple(university)),
+                isStapled: widget.university.isStapled,
+                onChanged: () async {
+                  if (!widget.university.isStapled) {
+                    context
+                        .read<SearchBloc>()
+                        .add(SearchEvent.changeStaple(widget.university));
+                  } else {
+                    final wasConfirmed = await ConfirmDialog.show(context);
+                    if (wasConfirmed != null && wasConfirmed && mounted) {
+                      context
+                          .read<SearchBloc>()
+                          .add(SearchEvent.changeStaple(widget.university));
+                    }
+                  }
+                },
               ),
             ],
           ),
@@ -65,11 +82,11 @@ class UniversityCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  university.name,
+                  widget.university.name,
                   style: AppTextStyles.w400s16h19black,
                 ),
                 const SizedBox(height: 8),
-                university.webPages.isEmpty
+                widget.university.webPages.isEmpty
                     ? Text(
                         'No web pages',
                         style: AppTextStyles.w400s12h15gray,
@@ -84,7 +101,7 @@ class UniversityCard extends StatelessWidget {
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            children: university.webPages
+                            children: widget.university.webPages
                                 .map(
                                   (wp) => Text(
                                     wp,
