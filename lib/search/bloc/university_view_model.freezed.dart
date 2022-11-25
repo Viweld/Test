@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UniversityViewModel {
+  String get id => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<String> get webPages => throw _privateConstructorUsedError;
@@ -33,7 +34,11 @@ abstract class $UniversityViewModelCopyWith<$Res> {
       _$UniversityViewModelCopyWithImpl<$Res, UniversityViewModel>;
   @useResult
   $Res call(
-      {String country, String name, List<String> webPages, bool isStapled});
+      {String id,
+      String country,
+      String name,
+      List<String> webPages,
+      bool isStapled});
 }
 
 /// @nodoc
@@ -49,12 +54,17 @@ class _$UniversityViewModelCopyWithImpl<$Res, $Val extends UniversityViewModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? country = null,
     Object? name = null,
     Object? webPages = null,
     Object? isStapled = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -84,7 +94,11 @@ abstract class _$$_UniversityViewModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String country, String name, List<String> webPages, bool isStapled});
+      {String id,
+      String country,
+      String name,
+      List<String> webPages,
+      bool isStapled});
 }
 
 /// @nodoc
@@ -98,12 +112,17 @@ class __$$_UniversityViewModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? country = null,
     Object? name = null,
     Object? webPages = null,
     Object? isStapled = null,
   }) {
     return _then(_$_UniversityViewModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
@@ -128,12 +147,15 @@ class __$$_UniversityViewModelCopyWithImpl<$Res>
 
 class _$_UniversityViewModel implements _UniversityViewModel {
   const _$_UniversityViewModel(
-      {this.country = '',
+      {required this.id,
+      this.country = '',
       this.name = '',
       final List<String> webPages = const <String>[],
       this.isStapled = false})
       : _webPages = webPages;
 
+  @override
+  final String id;
   @override
   @JsonKey()
   final String country;
@@ -154,7 +176,7 @@ class _$_UniversityViewModel implements _UniversityViewModel {
 
   @override
   String toString() {
-    return 'UniversityViewModel(country: $country, name: $name, webPages: $webPages, isStapled: $isStapled)';
+    return 'UniversityViewModel(id: $id, country: $country, name: $name, webPages: $webPages, isStapled: $isStapled)';
   }
 
   @override
@@ -162,6 +184,7 @@ class _$_UniversityViewModel implements _UniversityViewModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UniversityViewModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.country, country) || other.country == country) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._webPages, _webPages) &&
@@ -170,7 +193,7 @@ class _$_UniversityViewModel implements _UniversityViewModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, country, name,
+  int get hashCode => Object.hash(runtimeType, id, country, name,
       const DeepCollectionEquality().hash(_webPages), isStapled);
 
   @JsonKey(ignore: true)
@@ -183,11 +206,14 @@ class _$_UniversityViewModel implements _UniversityViewModel {
 
 abstract class _UniversityViewModel implements UniversityViewModel {
   const factory _UniversityViewModel(
-      {final String country,
+      {required final String id,
+      final String country,
       final String name,
       final List<String> webPages,
       final bool isStapled}) = _$_UniversityViewModel;
 
+  @override
+  String get id;
   @override
   String get country;
   @override

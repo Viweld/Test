@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hub_test/constants/app_colors.dart';
 import 'package:hub_test/constants/app_edge_insets.dart';
 import 'package:hub_test/constants/app_text_styles.dart';
+import 'package:hub_test/search/bloc/search_bloc.dart';
+import 'package:hub_test/search/bloc/university_view_model.dart';
 import 'package:hub_test/search/ui/widgets/university_card/clip_switch.dart';
 
 class UniversityCard extends StatelessWidget {
-  const UniversityCard({Key? key}) : super(key: key);
+  final UniversityViewModel university;
+
+  const UniversityCard({
+    required this.university,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +40,15 @@ class UniversityCard extends StatelessWidget {
             children: [
               const SizedBox(width: 16),
               Text(
-                'Country',
+                university.country,
                 style: AppTextStyles.w400s14h17black,
               ),
               const Spacer(),
               ClipSwitch(
-                isStapled: false,
-                onChanged: () {},
+                isStapled: university.isStapled,
+                onChanged: () => context
+                    .read<SearchBloc>()
+                    .add(SearchEvent.changeStaple(university)),
               ),
             ],
           ),
@@ -55,37 +65,36 @@ class UniversityCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Barcelona Graduate School of Economics',
+                  university.name,
                   style: AppTextStyles.w400s16h19black,
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Web pages',
-                      style: AppTextStyles.w400s12h15gray,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'data.datatat.com',
-                          style: AppTextStyles.w400s12h15gray,
-                        ),
-                        Text(
-                          'data.datt.com',
-                          style: AppTextStyles.w400s12h15gray,
-                        ),
-                        Text(
-                          'data.datatlklkjat.com',
-                          style: AppTextStyles.w400s12h15gray,
-                        ),
-                      ],
-                    )
-                  ],
-                )
+                university.webPages.isEmpty
+                    ? Text(
+                        'No web pages',
+                        style: AppTextStyles.w400s12h15gray,
+                      )
+                    : Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Web pages',
+                            style: AppTextStyles.w400s12h15gray,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: university.webPages
+                                .map(
+                                  (wp) => Text(
+                                    wp,
+                                    style: AppTextStyles.w400s12h15gray,
+                                  ),
+                                )
+                                .toList(),
+                          )
+                        ],
+                      ),
               ],
             ),
           )

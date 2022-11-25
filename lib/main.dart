@@ -6,18 +6,21 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hub_test/constants/app_themes.dart';
 import 'package:hub_test/search/ui/search_screen.dart';
 import 'package:hub_test/services/app_bloc_observer.dart';
+import 'package:hub_test/services/network/app_client.dart';
 import 'package:logger/logger.dart';
+import 'package:uuid/uuid.dart';
 
-Logger log = Logger(
-  printer: PrettyPrinter(),
-);
+Logger log = Logger(printer: PrettyPrinter());
+
+Uuid uuid = const Uuid();
 
 const bool isTestMode = true;
 
 void main() async {
-  await Hive.initFlutter();
   await runZonedGuarded<Future<void>>(
     () async {
+      AppClient.initDio();
+      await Hive.initFlutter();
       Bloc.observer = AppBlocObserver();
       runApp(const App());
     },
@@ -39,4 +42,3 @@ class App extends StatelessWidget {
     );
   }
 }
-

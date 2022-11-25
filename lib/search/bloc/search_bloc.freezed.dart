@@ -20,18 +20,21 @@ mixin _$SearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String val) search,
+    required TResult Function(UniversityViewModel u) changeStaple,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String val)? search,
+    TResult? Function(UniversityViewModel u)? changeStaple,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String val)? search,
+    TResult Function(UniversityViewModel u)? changeStaple,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$SearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_Staple value) changeStaple,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_Staple value)? changeStaple,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_Staple value)? changeStaple,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,6 +118,7 @@ class _$_Init extends _Init {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String val) search,
+    required TResult Function(UniversityViewModel u) changeStaple,
   }) {
     return init();
   }
@@ -121,6 +128,7 @@ class _$_Init extends _Init {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String val)? search,
+    TResult? Function(UniversityViewModel u)? changeStaple,
   }) {
     return init?.call();
   }
@@ -130,6 +138,7 @@ class _$_Init extends _Init {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String val)? search,
+    TResult Function(UniversityViewModel u)? changeStaple,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -143,6 +152,7 @@ class _$_Init extends _Init {
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_Staple value) changeStaple,
   }) {
     return init(this);
   }
@@ -152,6 +162,7 @@ class _$_Init extends _Init {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_Staple value)? changeStaple,
   }) {
     return init?.call(this);
   }
@@ -161,6 +172,7 @@ class _$_Init extends _Init {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_Staple value)? changeStaple,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -239,6 +251,7 @@ class _$_Search extends _Search {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function(String val) search,
+    required TResult Function(UniversityViewModel u) changeStaple,
   }) {
     return search(val);
   }
@@ -248,6 +261,7 @@ class _$_Search extends _Search {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
     TResult? Function(String val)? search,
+    TResult? Function(UniversityViewModel u)? changeStaple,
   }) {
     return search?.call(val);
   }
@@ -257,6 +271,7 @@ class _$_Search extends _Search {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function(String val)? search,
+    TResult Function(UniversityViewModel u)? changeStaple,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -270,6 +285,7 @@ class _$_Search extends _Search {
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_Staple value) changeStaple,
   }) {
     return search(this);
   }
@@ -279,6 +295,7 @@ class _$_Search extends _Search {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_Staple value)? changeStaple,
   }) {
     return search?.call(this);
   }
@@ -288,6 +305,7 @@ class _$_Search extends _Search {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_Staple value)? changeStaple,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -308,20 +326,192 @@ abstract class _Search extends SearchEvent {
 }
 
 /// @nodoc
-mixin _$SearchState {
+abstract class _$$_StapleCopyWith<$Res> {
+  factory _$$_StapleCopyWith(_$_Staple value, $Res Function(_$_Staple) then) =
+      __$$_StapleCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniversityViewModel u});
+
+  $UniversityViewModelCopyWith<$Res> get u;
+}
+
+/// @nodoc
+class __$$_StapleCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$_Staple>
+    implements _$$_StapleCopyWith<$Res> {
+  __$$_StapleCopyWithImpl(_$_Staple _value, $Res Function(_$_Staple) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? u = null,
+  }) {
+    return _then(_$_Staple(
+      null == u
+          ? _value.u
+          : u // ignore: cast_nullable_to_non_nullable
+              as UniversityViewModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UniversityViewModelCopyWith<$Res> get u {
+    return $UniversityViewModelCopyWith<$Res>(_value.u, (value) {
+      return _then(_value.copyWith(u: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_Staple extends _Staple {
+  const _$_Staple(this.u) : super._();
+
+  @override
+  final UniversityViewModel u;
+
+  @override
+  String toString() {
+    return 'SearchEvent.changeStaple(u: $u)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Staple &&
+            (identical(other.u, u) || other.u == u));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, u);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StapleCopyWith<_$_Staple> get copyWith =>
+      __$$_StapleCopyWithImpl<_$_Staple>(this, _$identity);
+
+  @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() valueObject,
+    required TResult Function() init,
+    required TResult Function(String val) search,
+    required TResult Function(UniversityViewModel u) changeStaple,
+  }) {
+    return changeStaple(u);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String val)? search,
+    TResult? Function(UniversityViewModel u)? changeStaple,
+  }) {
+    return changeStaple?.call(u);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String val)? search,
+    TResult Function(UniversityViewModel u)? changeStaple,
+    required TResult orElse(),
+  }) {
+    if (changeStaple != null) {
+      return changeStaple(u);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_Search value) search,
+    required TResult Function(_Staple value) changeStaple,
+  }) {
+    return changeStaple(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_Staple value)? changeStaple,
+  }) {
+    return changeStaple?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_Search value)? search,
+    TResult Function(_Staple value)? changeStaple,
+    required TResult orElse(),
+  }) {
+    if (changeStaple != null) {
+      return changeStaple(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Staple extends SearchEvent {
+  const factory _Staple(final UniversityViewModel u) = _$_Staple;
+  const _Staple._() : super._();
+
+  UniversityViewModel get u;
+  @JsonKey(ignore: true)
+  _$$_StapleCopyWith<_$_Staple> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SearchState {
+  List<UniversityViewModel> get stapledUns =>
+      throw _privateConstructorUsedError;
+  List<UniversityViewModel> get foundUns => throw _privateConstructorUsedError;
+  String get searchVal => throw _privateConstructorUsedError;
+  bool get isFirstLoading => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            List<UniversityViewModel> stapledUns,
+            List<UniversityViewModel> foundUns,
+            String searchVal,
+            bool isFirstLoading,
+            bool isLoading)
+        valueObject,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? valueObject,
+    TResult? Function(
+            List<UniversityViewModel> stapledUns,
+            List<UniversityViewModel> foundUns,
+            String searchVal,
+            bool isFirstLoading,
+            bool isLoading)?
+        valueObject,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? valueObject,
+    TResult Function(
+            List<UniversityViewModel> stapledUns,
+            List<UniversityViewModel> foundUns,
+            String searchVal,
+            bool isFirstLoading,
+            bool isLoading)?
+        valueObject,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -341,6 +531,10 @@ mixin _$SearchState {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchStateCopyWith<SearchState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -348,6 +542,13 @@ abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
       _$SearchStateCopyWithImpl<$Res, SearchState>;
+  @useResult
+  $Res call(
+      {List<UniversityViewModel> stapledUns,
+      List<UniversityViewModel> foundUns,
+      String searchVal,
+      bool isFirstLoading,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -359,12 +560,53 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stapledUns = null,
+    Object? foundUns = null,
+    Object? searchVal = null,
+    Object? isFirstLoading = null,
+    Object? isLoading = null,
+  }) {
+    return _then(_value.copyWith(
+      stapledUns: null == stapledUns
+          ? _value.stapledUns
+          : stapledUns // ignore: cast_nullable_to_non_nullable
+              as List<UniversityViewModel>,
+      foundUns: null == foundUns
+          ? _value.foundUns
+          : foundUns // ignore: cast_nullable_to_non_nullable
+              as List<UniversityViewModel>,
+      searchVal: null == searchVal
+          ? _value.searchVal
+          : searchVal // ignore: cast_nullable_to_non_nullable
+              as String,
+      isFirstLoading: null == isFirstLoading
+          ? _value.isFirstLoading
+          : isFirstLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$_StateCopyWith<$Res> {
+abstract class _$$_StateCopyWith<$Res> implements $SearchStateCopyWith<$Res> {
   factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
       __$$_StateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {List<UniversityViewModel> stapledUns,
+      List<UniversityViewModel> foundUns,
+      String searchVal,
+      bool isFirstLoading,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -373,51 +615,162 @@ class __$$_StateCopyWithImpl<$Res>
     implements _$$_StateCopyWith<$Res> {
   __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? stapledUns = null,
+    Object? foundUns = null,
+    Object? searchVal = null,
+    Object? isFirstLoading = null,
+    Object? isLoading = null,
+  }) {
+    return _then(_$_State(
+      stapledUns: null == stapledUns
+          ? _value._stapledUns
+          : stapledUns // ignore: cast_nullable_to_non_nullable
+              as List<UniversityViewModel>,
+      foundUns: null == foundUns
+          ? _value._foundUns
+          : foundUns // ignore: cast_nullable_to_non_nullable
+              as List<UniversityViewModel>,
+      searchVal: null == searchVal
+          ? _value.searchVal
+          : searchVal // ignore: cast_nullable_to_non_nullable
+              as String,
+      isFirstLoading: null == isFirstLoading
+          ? _value.isFirstLoading
+          : isFirstLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_State extends _State {
-  const _$_State() : super._();
+  const _$_State(
+      {final List<UniversityViewModel> stapledUns =
+          const <UniversityViewModel>[],
+      final List<UniversityViewModel> foundUns = const <UniversityViewModel>[],
+      this.searchVal = '',
+      this.isFirstLoading = true,
+      this.isLoading = false})
+      : _stapledUns = stapledUns,
+        _foundUns = foundUns,
+        super._();
+
+  final List<UniversityViewModel> _stapledUns;
+  @override
+  @JsonKey()
+  List<UniversityViewModel> get stapledUns {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_stapledUns);
+  }
+
+  final List<UniversityViewModel> _foundUns;
+  @override
+  @JsonKey()
+  List<UniversityViewModel> get foundUns {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_foundUns);
+  }
+
+  @override
+  @JsonKey()
+  final String searchVal;
+  @override
+  @JsonKey()
+  final bool isFirstLoading;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'SearchState.valueObject()';
+    return 'SearchState.valueObject(stapledUns: $stapledUns, foundUns: $foundUns, searchVal: $searchVal, isFirstLoading: $isFirstLoading, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_State);
+        (other.runtimeType == runtimeType &&
+            other is _$_State &&
+            const DeepCollectionEquality()
+                .equals(other._stapledUns, _stapledUns) &&
+            const DeepCollectionEquality().equals(other._foundUns, _foundUns) &&
+            (identical(other.searchVal, searchVal) ||
+                other.searchVal == searchVal) &&
+            (identical(other.isFirstLoading, isFirstLoading) ||
+                other.isFirstLoading == isFirstLoading) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_stapledUns),
+      const DeepCollectionEquality().hash(_foundUns),
+      searchVal,
+      isFirstLoading,
+      isLoading);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StateCopyWith<_$_State> get copyWith =>
+      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() valueObject,
+    required TResult Function(
+            List<UniversityViewModel> stapledUns,
+            List<UniversityViewModel> foundUns,
+            String searchVal,
+            bool isFirstLoading,
+            bool isLoading)
+        valueObject,
   }) {
-    return valueObject();
+    return valueObject(
+        stapledUns, foundUns, searchVal, isFirstLoading, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? valueObject,
+    TResult? Function(
+            List<UniversityViewModel> stapledUns,
+            List<UniversityViewModel> foundUns,
+            String searchVal,
+            bool isFirstLoading,
+            bool isLoading)?
+        valueObject,
   }) {
-    return valueObject?.call();
+    return valueObject?.call(
+        stapledUns, foundUns, searchVal, isFirstLoading, isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? valueObject,
+    TResult Function(
+            List<UniversityViewModel> stapledUns,
+            List<UniversityViewModel> foundUns,
+            String searchVal,
+            bool isFirstLoading,
+            bool isLoading)?
+        valueObject,
     required TResult orElse(),
   }) {
     if (valueObject != null) {
-      return valueObject();
+      return valueObject(
+          stapledUns, foundUns, searchVal, isFirstLoading, isLoading);
     }
     return orElse();
   }
@@ -452,6 +805,26 @@ class _$_State extends _State {
 }
 
 abstract class _State extends SearchState {
-  const factory _State() = _$_State;
+  const factory _State(
+      {final List<UniversityViewModel> stapledUns,
+      final List<UniversityViewModel> foundUns,
+      final String searchVal,
+      final bool isFirstLoading,
+      final bool isLoading}) = _$_State;
   const _State._() : super._();
+
+  @override
+  List<UniversityViewModel> get stapledUns;
+  @override
+  List<UniversityViewModel> get foundUns;
+  @override
+  String get searchVal;
+  @override
+  bool get isFirstLoading;
+  @override
+  bool get isLoading;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StateCopyWith<_$_State> get copyWith =>
+      throw _privateConstructorUsedError;
 }

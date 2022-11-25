@@ -16,7 +16,7 @@ UniversityApiModel _$UniversityApiModelFromJson(Map<String, dynamic> json) =>
           .toList(),
       alphaTwoCode: json['alpha_two_code'] as String?,
       name: json['name'] as String?,
-      stateprovince: json['state-province'],
+      stateprovince: json['state-province'] as String?,
     );
 
 Map<String, dynamic> _$UniversityApiModelToJson(UniversityApiModel instance) =>

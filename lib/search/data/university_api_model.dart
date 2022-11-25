@@ -1,9 +1,15 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hub_test/main.dart';
+import 'package:hub_test/search/data/university.dart';
+import 'package:uuid/uuid.dart';
 
 part 'university_api_model.g.dart';
 
 @JsonSerializable()
-class UniversityApiModel {
+class UniversityApiModel implements University {
+
+  @JsonKey(ignore: true)
+  String id;
   String? country;
   List<String>? domains;
   @JsonKey(name: 'web_pages')
@@ -12,7 +18,7 @@ class UniversityApiModel {
   String? alphaTwoCode;
   String? name;
   @JsonKey(name: 'state-province')
-  dynamic stateprovince;
+  String? stateprovince;
 
   UniversityApiModel({
     this.country,
@@ -21,11 +27,16 @@ class UniversityApiModel {
     this.alphaTwoCode,
     this.name,
     this.stateprovince,
-  });
+  }) : id = uuid.v5(
+          Uuid.NAMESPACE_URL,
+          '${country ?? ''}'
+          '${name ?? ''}'
+          '${alphaTwoCode ?? ''}'
+          '${stateprovince is String ? stateprovince : ''}',
+        ){print('$id - $name');}
 
   factory UniversityApiModel.fromJson(Map<String, dynamic> json) =>
       _$UniversityApiModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$UniversityApiModelToJson(this);
-
 }

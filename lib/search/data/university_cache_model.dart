@@ -1,6 +1,9 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hub_test/search/bloc/university_view_model.dart';
+import 'package:hub_test/search/data/university.dart';
 
-class UniversityCache extends HiveObject {
+class UniversityCache extends HiveObject implements University {
+  String id;
   String? country;
   List<String>? domains;
   List<String>? webPages;
@@ -9,6 +12,7 @@ class UniversityCache extends HiveObject {
   String? stateprovince;
 
   UniversityCache({
+    required this.id,
     this.country,
     this.domains,
     this.webPages,
@@ -17,8 +21,16 @@ class UniversityCache extends HiveObject {
     this.stateprovince,
   });
 
+  static UniversityCache create(UniversityViewModel u)=>UniversityCache(
+    id:u.id,
+    country:u.country,
+    webPages:u.webPages,
+    name:u.name,
+  );
+
   @override
-  String toString() => 'country=$country; '
+  String toString() => 'id=$id; '
+      'country=$country; '
       'domains=$domains; '
       'webPages=$webPages; '
       'alphaTwoCode=$alphaTwoCode; '
@@ -33,6 +45,7 @@ class UniversityCacheAdapter extends TypeAdapter<UniversityCache> {
   @override
   UniversityCache read(BinaryReader reader) {
     return UniversityCache(
+      id: reader.readString(),
       country: reader.readString(),
       domains: reader.readStringList(),
       webPages: reader.readStringList(),
@@ -44,6 +57,7 @@ class UniversityCacheAdapter extends TypeAdapter<UniversityCache> {
 
   @override
   void write(BinaryWriter writer, UniversityCache obj) {
+    writer.writeString(obj.id);
     writer.writeString(obj.country ?? '');
     writer.writeStringList(obj.domains ?? <String>[]);
     writer.writeStringList(obj.webPages ?? <String>[]);
